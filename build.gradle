@@ -1,0 +1,43 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.3'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.kam'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+	implementation group: 'io.r2dbc', name: 'r2dbc-postgresql', version: '0.8.13.RELEASE'
+	implementation group: 'org.flywaydb', name: 'flyway-core', version: '10.1.0'
+	runtimeOnly group: 'org.flywaydb', name: 'flyway-database-postgresql', version: '10.9.1'
+
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.1'
+	runtimeOnly 'org.postgresql:postgresql'
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
