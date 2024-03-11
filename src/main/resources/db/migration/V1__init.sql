@@ -3,4 +3,14 @@ CREATE TABLE Customers(
     firstname VARCHAR(250),
     lastname VARCHAR(250),
     zipcode integer
-)
+);
+
+
+CREATE TABLE Orders(
+    id SERIAL NOT NULL PRIMARY KEY,
+    productname VARCHAR(250),
+    productid integer,
+    customerid integer,
+    quantity integer,
+    ordertotal numeric
+);
