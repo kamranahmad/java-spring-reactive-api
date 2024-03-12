@@ -22,7 +22,7 @@ public class CacheConfig {
     @Bean
     @Primary
     public CacheManager cacheManager(Caffeine caffeine) {
-        CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager("customer_cache");
+        CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager("customer_cache", "product_cache");
         caffeineCacheManager.setCaffeine(caffeine);
         caffeineCacheManager.setAsyncCacheMode(true);
 
